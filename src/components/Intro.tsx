@@ -10,7 +10,7 @@ const Intro = () => {
           const style = {
             left: Math.floor(Math.random() * window.innerWidth),
             top: Math.floor(Math.random() * 2 * window.innerHeight),
-            animationDuration: `${Math.floor(Math.random() * 60) + 30}s`,
+            animationDuration: `${Math.floor(Math.random() * 60) + 60}s`,
           };
           const key = `${style.left}${style.top}`;
           return (

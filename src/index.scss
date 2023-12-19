@@ -3,6 +3,45 @@
 $primary-dark: #090a0f;
 $primary-light: #149fcb;
 
+@mixin flex($dir: initial, $gap: initial) {
+  display: flex;
+  flex-direction: $dir;
+  gap: $gap;
+}
+
+@mixin flex-justify($justify: flex-start, $dir: initial, $gap: initial) {
+  @include flex($dir, $gap);
+  justify-content: $justify;
+}
+
+@mixin flex-align($align: flex-start, $dir: initial, $gap: initial) {
+  @include flex($dir, $gap);
+  align-items: $align;
+}
+
+@mixin flex-justify-align(
+  $justify: flex-start,
+  $align: flex-start,
+  $dir: initial,
+  $gap: initial
+) {
+  @include flex($dir, $gap);
+  justify-content: $justify;
+  align-content: $align;
+}
+
+%bottom-line {
+  content: "";
+  position: absolute;
+  background-color: $primary-light;
+  width: 3em;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  margin-left: 0;
+  transition: all 0.5s ease;
+}
+
 *,
 *::before,
 *::after {
@@ -13,6 +52,7 @@ $primary-light: #149fcb;
 
 body {
   font-family: "Nunito Sans", sans-serif;
+  background-color: whitesmoke;
 }
 
 .container {
@@ -27,12 +67,11 @@ header {
   padding: 1.5em;
   background-color: transparent;
   z-index: 99;
+  // background-color: $primary-dark;
 }
 
 #navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flex-justify-align(space-between, center);
 
   .logo {
     img {
@@ -46,9 +85,7 @@ header {
     height: 24px;
     background-color: transparent;
     border: none;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
+    @include flex-justify(space-around, column);
     cursor: pointer;
 
     .bar {
@@ -77,10 +114,8 @@ header {
   #nav-menu {
     .nav-items {
       list-style: none;
-      display: flex;
-      align-items: center;
+      @include flex-align(center, initial, 1.4em);
       height: 100%;
-      gap: 1.4em;
 
       .nav-item {
         .nav-link {
@@ -97,15 +132,8 @@ header {
           }
 
           &::after {
-            content: "";
-            position: absolute;
-            background-color: $primary-light;
+            @extend %bottom-line;
             width: 0;
-            height: 2px;
-            left: 0;
-            bottom: 0;
-            margin-left: 0;
-            transition: all 0.5s ease;
           }
 
           &.active::after,
@@ -120,9 +148,7 @@ header {
 
 #intro {
   min-height: 100dvh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-justify-align(center, center);
   background: radial-gradient(ellipse at bottom, #1b2735 0, #090a0f 100%);
   overflow: hidden;
   color: #fff;
@@ -131,7 +157,7 @@ header {
     position: absolute;
     left: 0;
     top: 0;
-    width: 100dvw;
+    right: 0;
     height: 100dvh;
     overflow: hidden;
     z-index: 0;
@@ -202,6 +228,115 @@ header {
   }
 }
 
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes move-star {
+  0% {
+    translate: 0;
+  }
+  100% {
+    translate: 0 -150vh;
+  }
+}
+
+.section {
+  @include flex-justify(center);
+
+  .container {
+    margin: 6em 4em;
+    padding: 2.5em;
+    width: 100%;
+    max-width: 1200px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px 1px rgba($primary-dark, 0.1);
+
+    .row {
+      @include flex(row, 2em);
+
+      .col {
+        min-width: 50%;
+      }
+    }
+  }
+}
+
+#about {
+  .profile {
+    @include flex-justify(center);
+    margin-bottom: 2em;
+
+    img {
+      width: 200px;
+      aspect-ratio: 1 / 1;
+      max-width: 100%;
+      border-radius: 50%;
+      box-shadow: 8px 8px 2px 1px rgba($primary-light, 0.1),
+        -8px -8px 2px 1px rgba($primary-dark, 0.1);
+    }
+  }
+
+  .skills {
+    @include flex(column, 1em);
+    list-style: none;
+
+    .skill-item {
+      position: relative;
+      padding: 6px 12px;
+      background-color: rgba($primary-light, 0.4);
+      border-radius: 4px;
+
+      .skill-data {
+        position: relative;
+        @include flex-justify(space-between);
+        color: #ffffff;
+        z-index: 1;
+
+        .skill-percent {
+          color: $primary-dark;
+        }
+      }
+
+      .progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        background-color: $primary-light;
+      }
+    }
+  }
+
+  .title {
+    position: relative;
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 0.75em;
+
+    &::after {
+      @extend %bottom-line;
+      height: 4px;
+    }
+  }
+
+  .info {
+    color: $primary-dark;
+
+    p {
+      font-size: 1.25rem;
+      font-weight: 300;
+      margin-bottom: 1em;
+    }
+  }
+}
+
 @media only screen and (min-width: 767px) {
   #navbar .nav-menu-toggler {
     display: none;
@@ -222,28 +357,54 @@ header {
     }
 
     .nav-items {
-      flex-direction: column;
+      flex-direction: column !important;
 
       .nav-link {
       }
     }
   }
+
+  #intro .container {
+    padding: 0 1em;
+
+    .intro-title {
+      font-size: 3rem;
+    }
+
+    .intro-subtitle {
+      font-size: 2rem;
+    }
+
+    .btn {
+      font-size: 1rem;
+    }
+  }
+
+  .section {
+    .container {
+      margin: 4em 2em;
+
+      .row {
+        flex-direction: column-reverse;
+      }
+    }
+  }
 }
 
-@keyframes blink {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
+@media only screen and (max-width: 540px) {
+  #intro .container {
+    .intro-title {
+      font-size: 2rem;
+    }
 
-@keyframes move-star {
-  0% {
-    translate: 0;
+    .intro-subtitle {
+      font-size: 1.25rem;
+    }
   }
-  100% {
-    translate: 0 -150vh;
+
+  .section {
+    .container {
+      margin: 3em 1em;
+    }
   }
 }
