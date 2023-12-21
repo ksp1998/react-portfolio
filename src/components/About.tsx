@@ -29,7 +29,7 @@ const About = () => {
                 <li className="skill-item" key={i}>
                   <div className="skill-data">
                     <span className="skill-name">{skill.name}</span>
-                    <span className="skill-percent">{skill.percent}%</span>
+                    {/* <span className="skill-percent">{skill.percent}%</span> */}
                   </div>
                   <div
                     className="progress"
