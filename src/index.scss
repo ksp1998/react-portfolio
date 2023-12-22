@@ -2,6 +2,7 @@
 
 $primary-dark: #090a0f;
 $primary-light: #149fcb;
+$light-color: #f0f2f5;
 
 @mixin flex($dir: initial, $gap: initial) {
   display: flex;
@@ -52,7 +53,7 @@ $primary-light: #149fcb;
 
 body {
   font-family: "Nunito Sans", sans-serif;
-  background-color: whitesmoke;
+  background-color: $light-color;
   scroll-behavior: smooth;
   color: $primary-dark;
 }
@@ -69,7 +70,7 @@ header {
   padding: 1.5em;
   background-color: transparent;
   z-index: 99;
-  // background-color: $primary-dark;
+  background-color: transparent;
 }
 
 #navbar {
@@ -148,46 +149,46 @@ header {
   }
 }
 
+.stars {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+
+  .star {
+    position: absolute;
+    background-color: #ffffff;
+    border-radius: 50%;
+    animation: move-star linear infinite;
+
+    &.size-1 {
+      width: 1px;
+      height: 1px;
+    }
+
+    &.size-2 {
+      width: 2px;
+      height: 2px;
+      background-color: #ffffc1;
+    }
+
+    &.size-3 {
+      width: 3px;
+      height: 3px;
+      background-color: #c9f2ff;
+    }
+  }
+}
+
 #intro {
   min-height: 100dvh;
   @include flex-justify-align(center, center);
   background: radial-gradient(ellipse at bottom, #1b2735 0, #090a0f 100%);
   overflow: hidden;
   color: #fff;
-
-  .stars {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    height: 100dvh;
-    overflow: hidden;
-    z-index: 0;
-
-    .star {
-      position: absolute;
-      background-color: #ffffff;
-      border-radius: 50%;
-      animation: move-star linear infinite;
-
-      &.size-1 {
-        width: 1px;
-        height: 1px;
-      }
-
-      &.size-2 {
-        width: 2px;
-        height: 2px;
-        background-color: #ffffc1;
-      }
-
-      &.size-3 {
-        width: 3px;
-        height: 3px;
-        background-color: #c9f2ff;
-      }
-    }
-  }
 
   .container {
     text-align: center;
@@ -216,7 +217,7 @@ header {
       font-size: 1.25rem;
       padding: 0.5em 2em;
       background-color: $primary-light;
-      color: #ffffff;
+      color: $light-color;
       border: 2px solid $primary-light;
       border-radius: 8px;
       transition: all 250ms ease;
@@ -304,8 +305,12 @@ header {
       @include flex(column);
 
       .thumbnail,
-      .details > *:not(.language) {
+      .title {
         translate: 0 -50px;
+      }
+
+      .description {
+        translate: 0 -37.5px;
       }
 
       .thumbnail {
@@ -364,7 +369,7 @@ header {
             text-decoration: none;
             background-color: transparent;
             border: 2px solid #ffffff;
-            color: #ffffff;
+            color: $light-color;
             border-radius: 4px;
             transition: all 250ms ease;
 
@@ -381,7 +386,7 @@ header {
         position: relative;
         padding: 1em;
         flex-grow: 1;
-        @include flex(column, 1em);
+        @include flex(column);
 
         .title {
           text-transform: capitalize;
@@ -426,7 +431,7 @@ header {
     .view-more {
       display: inline-block;
       margin-top: 1em;
-      color: #ffffff;
+      color: $light-color;
       font-weight: 700;
       text-decoration: none;
       background-color: $primary-dark;
@@ -450,7 +455,7 @@ header {
 
   .container {
     background-color: $primary-dark;
-    color: #ffffff;
+    color: $light-color;
   }
 
   .profile {
@@ -481,7 +486,7 @@ header {
       .skill-data {
         position: relative;
         @include flex-justify(space-between);
-        color: #ffffff;
+        color: $light-color;
         z-index: 1;
 
         .skill-percent {
@@ -516,6 +521,44 @@ header {
       font-size: 1.25rem;
       font-weight: 300;
       margin-bottom: 1em;
+    }
+  }
+}
+
+#footer {
+  background-color: rgba($primary-dark, 0.95);
+  color: $light-color;
+  text-align: center;
+
+  .content {
+    padding: 1em;
+
+    a {
+      color: $primary-light;
+      text-decoration: none;
+    }
+  }
+}
+
+#contact {
+  background-color: rgba($primary-dark, 1);
+  padding: 2em;
+
+  .social-icons {
+    text-align: center;
+
+    .icon {
+      display: inline-flex;
+      font-size: 2rem;
+      color: $light-color;
+      padding: 0.6rem;
+      margin: 0 0.25rem;
+      transition: 250ms;
+
+      &:hover {
+        color: white;
+        translate: 0 -4px;
+      }
     }
   }
 }
