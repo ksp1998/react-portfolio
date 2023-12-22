@@ -8,28 +8,28 @@ const accessToken =
 
 const thumbnails: { [key: number]: object } = {
   726853910: {
-    front: "/public/images/next-medico-login.png",
-    back: "/public/images/next-medico-dashboard.png",
+    front: "/images/next-medico-login.png",
+    back: "/images/next-medico-dashboard.png",
   },
   672590437: {
-    front: "/public/images/react-todo-app-dark.png",
-    back: "/public/images/react-todo-app-light.png",
+    front: "/images/react-todo-app-dark.png",
+    back: "/images/react-todo-app-light.png",
   },
   416856907: {
-    front: "/public/images/photogram-splash.jpg",
-    back: "/public/images/photogram-home.jpg",
+    front: "/images/photogram-splash.jpg",
+    back: "/images/photogram-home.jpg",
   },
   385034118: {
-    front: "/public/images/react-snake-game.png",
-    back: "/public/images/react-snake-game-playing.png",
+    front: "/images/react-snake-game.png",
+    back: "/images/react-snake-game-playing.png",
   },
   383492913: {
-    front: "/public/images/analog-clock-dark.png",
-    back: "/public/images/analog-clock-light.png",
+    front: "/images/analog-clock-dark.png",
+    back: "/images/analog-clock-light.png",
   },
   378732731: {
-    front: "/public/images/weather-app-nodejs-dark.png",
-    back: "/public/images/weather-app-nodejs-light.png",
+    front: "/images/weather-app-nodejs-dark.png",
+    back: "/images/weather-app-nodejs-light.png",
   },
 };
 
