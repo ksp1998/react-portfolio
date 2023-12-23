@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import ProjectCard from "./ProjectCard";
+import Stars from "./Stars";
+import { FaArrowCircleRight } from "react-icons/fa";
 
 const githubEndpoint =
   "https://api.github.com/users/ksp1998/repos?sort=date&per_page=100";
-const accessToken =
-  "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";
+const accessToken = import.meta.env.VITE_GITHUB_ACCESS_TOKEN;
 
 const thumbnails: { [key: number]: object } = {
   726853910: {
@@ -56,8 +57,19 @@ const Projects = () => {
           <h2 className="section-heading">Projects</h2>
         </div>
         <div className="row">
-          {!projects.length && <h1>Fetching...</h1>}
-          {projects.length &&
+          {!projects.length && (
+            <>
+              <ProjectCard project={{ language: " " }} skeleton={true} />
+              <ProjectCard project={{ language: " " }} skeleton={true} />
+              <ProjectCard project={{ language: " " }} skeleton={true} />
+            </>
+            // <div className="loading">
+            //   <span>Fetching Projects</span>
+            //   <FaSpinner />
+            // </div>
+          )}
+
+          {projects.length > 0 &&
             projects
               .filter((project) =>
                 Object.keys(thumbnails).includes(`${project.id}`)
@@ -73,11 +85,13 @@ const Projects = () => {
 
         <center>
           <a
-            className="view-more"
+            className="btn view-more"
             href="https://github.com/ksp1998?tab=repositories"
             target="_new"
           >
-            View More
+            <Stars count={10} style={{ zIndex: 1 }} width={165} />
+            <span>View More</span>
+            <FaArrowCircleRight />
           </a>
         </center>
       </div>

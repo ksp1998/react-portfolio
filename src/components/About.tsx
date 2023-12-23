@@ -1,3 +1,5 @@
+import Stars from "./Stars";
+
 const skills = [
   { name: "JavaScript", percent: 90 },
   { name: "ReactJs", percent: 80 },
@@ -15,6 +17,7 @@ const About = () => {
   return (
     <section id="about" className="section">
       <div className="container">
+        <Stars count={200} />
         <div className="row">
           <div className="col">
             <div className="profile">
@@ -46,13 +49,12 @@ const About = () => {
               <p>
                 A software engineer with a passion for turning concepts into
                 tangible outcomes through coding. I am enthusiastic about
-                utilizing JavaScript and it's libraries to craft exceptional
-                user experiences.
+                utilizing JavaScript to craft exceptional user experiences.
               </p>
               <p>
-                Bringing two years of expertise in crafting web applications,
-                harnessing the latest front-end and back-end technologies for
-                optimal results.
+                Bringing two years of expertise in web development, harnessing
+                the latest front-end and back-end technologies for optimal
+                results.
               </p>
               <p>
                 Enthusiastic developer driven to create interactive websites

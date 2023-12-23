@@ -1,23 +1,27 @@
-interface Props {
-  project: { [key: string]: string };
-  thumbnail: { front?: string; back?: string };
-}
+type Props = {
+  skeleton?: boolean;
+  project?: { [key: string]: string };
+  thumbnail?: { front?: string; back?: string };
+};
 
-const ProjectCard = ({ project, thumbnail }: Props) => {
+const ProjectCard = ({ skeleton = false, project = {}, thumbnail }: Props) => {
   return (
-    <div className="col project-card">
+    <div className={`col project-card ${skeleton ? "skeleton" : ""}`}>
       <figure className="thumbnail">
         <img className="front" src={thumbnail?.front} alt={project.name} />
-        <img src={thumbnail?.back} alt={project.name} className="back" />
+        <img className="back" src={thumbnail?.back} alt={project.name} />
+
         <div className="links">
           {project.homepage && (
             <a href={project.homepage} className="link" target="_new">
               Demo
             </a>
           )}
-          <a href={project.html_url} className="link" target="_new">
-            Github
-          </a>
+          {project.html_url && (
+            <a href={project.html_url} className="link" target="_new">
+              Github
+            </a>
+          )}
         </div>
       </figure>
       <div className="details">

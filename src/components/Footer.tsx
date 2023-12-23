@@ -1,8 +1,11 @@
 import Contact from "./Contact";
+import Stars from "./Stars";
 
 const Footer = () => {
   return (
     <footer id="footer">
+      <Stars count={200} />
+
       <Contact />
 
       <div className="content">
