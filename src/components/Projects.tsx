@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import ProjectCard from "./ProjectCard";
+import Stars from "./Stars";
+import { FaArrowCircleRight } from "react-icons/fa";
 
 const githubEndpoint =
   "https://api.github.com/users/ksp1998/repos?sort=date&per_page=100";
@@ -56,8 +58,19 @@ const Projects = () => {
           <h2 className="section-heading">Projects</h2>
         </div>
         <div className="row">
-          {!projects.length && <h1>Fetching...</h1>}
-          {projects.length &&
+          {!projects.length && (
+            <>
+              <ProjectCard project={{ language: " " }} skeleton={true} />
+              <ProjectCard project={{ language: " " }} skeleton={true} />
+              <ProjectCard project={{ language: " " }} skeleton={true} />
+            </>
+            // <div className="loading">
+            //   <span>Fetching Projects</span>
+            //   <FaSpinner />
+            // </div>
+          )}
+
+          {projects.length > 0 &&
             projects
               .filter((project) =>
                 Object.keys(thumbnails).includes(`${project.id}`)
@@ -73,11 +86,13 @@ const Projects = () => {
 
         <center>
           <a
-            className="view-more"
+            className="btn view-more"
             href="https://github.com/ksp1998?tab=repositories"
             target="_new"
           >
-            View More
+            <Stars count={10} style={{ zIndex: 1 }} width={165} />
+            <span>View More</span>
+            <FaArrowCircleRight />
           </a>
         </center>
       </div>

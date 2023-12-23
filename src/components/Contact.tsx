@@ -1,17 +1,12 @@
-import {
-  FaFacebookF,
-  FaGithub,
-  FaInstagram,
-  FaLinkedin,
-  FaTwitter,
-} from "react-icons/fa";
+import { FaFacebookF, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { MdMail } from "react-icons/md";
 
 const socialLinks = [
   {
-    id: "facebook",
-    href: "https://www.facebook.com/ksuthar1998",
-    background: "#3b5998",
-    icon: <FaFacebookF />,
+    id: "email",
+    href: "mailto:ksuthar2016@gmail.com",
+    background: "#f5c647",
+    icon: <MdMail />,
   },
   {
     id: "linkedin",
@@ -20,30 +15,34 @@ const socialLinks = [
     icon: <FaLinkedin />,
   },
   {
+    id: "github",
+    href: "https://github.com/ksp1998",
+    background: "#333333",
+    icon: <FaGithub />,
+  },
+  {
+    id: "facebook",
+    href: "https://www.facebook.com/ksuthar1998",
+    background: "#3b5998",
+    icon: <FaFacebookF />,
+  },
+  {
     id: "instagram",
     href: "https://www.instagram.com/ksuthar98/",
     background:
       "linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)",
     icon: <FaInstagram />,
   },
-  {
-    id: "twitter",
-    href: "https://twitter.com/ksuth1998",
-    background: "#55acee",
-    icon: <FaTwitter />,
-  },
-  {
-    id: "github",
-    href: "https://github.com/ksp1998",
-    background: "#333333",
-    icon: <FaGithub />,
-  },
 ];
 
 const Contact = () => {
   return (
-    <section id="contact">
+    <section id="contact" className="section">
       <div className="social-icons">
+        <div className="heading-wrapper">
+          <h2 className="section-heading heading">Get In Touch</h2>
+        </div>
+
         {socialLinks.map((link) => (
           <a
             key={link.id}
