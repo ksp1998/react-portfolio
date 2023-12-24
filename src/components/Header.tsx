@@ -88,6 +88,7 @@ const Header = () => {
                       navItem.href === active && "active"
                     }`}
                     href={navItem.href}
+                    onClick={() => setOpen(false)}
                   >
                     {navItem.text}
                   </a>
