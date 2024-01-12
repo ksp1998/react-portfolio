@@ -2,37 +2,11 @@ import { useEffect, useState } from "react";
 import ProjectCard from "./ProjectCard";
 import Stars from "./Stars";
 import { FaArrowCircleRight } from "react-icons/fa";
+import myProjects from "../utils/myProjects.ts";
 
 const githubEndpoint =
   "https://api.github.com/users/ksp1998/repos?sort=date&per_page=100";
 const accessToken = import.meta.env.VITE_GITHUB_ACCESS_TOKEN;
-
-const thumbnails: { [key: number]: object } = {
-  726853910: {
-    front: "/images/next-medico-login.png",
-    back: "/images/next-medico-dashboard.png",
-  },
-  672590437: {
-    front: "/images/react-todo-app-dark.png",
-    back: "/images/react-todo-app-light.png",
-  },
-  416856907: {
-    front: "/images/photogram-splash.jpg",
-    back: "/images/photogram-home.jpg",
-  },
-  385034118: {
-    front: "/images/react-snake-game.png",
-    back: "/images/react-snake-game-playing.png",
-  },
-  383492913: {
-    front: "/images/analog-clock-dark.png",
-    back: "/images/analog-clock-light.png",
-  },
-  378732731: {
-    front: "/images/weather-app-nodejs-dark.png",
-    back: "/images/weather-app-nodejs-light.png",
-  },
-};
 
 const Projects = () => {
   const [projects, setProjects] = useState<Record<string, string>[]>([]);
@@ -63,24 +37,22 @@ const Projects = () => {
               <ProjectCard project={{ language: " " }} skeleton={true} />
               <ProjectCard project={{ language: " " }} skeleton={true} />
             </>
-            // <div className="loading">
-            //   <span>Fetching Projects</span>
-            //   <FaSpinner />
-            // </div>
           )}
 
           {projects.length > 0 &&
-            projects
-              .filter((project) =>
-                Object.keys(thumbnails).includes(`${project.id}`)
-              )
-              .map((project) => (
+            myProjects.map(({ id, thumbnails, techs }) => {
+              const project = projects.find(
+                (project) => Number(project.id) === id
+              );
+              return (
                 <ProjectCard
-                  key={project.id}
+                  key={id}
                   project={project}
-                  thumbnail={thumbnails[Number(project.id)]}
+                  thumbnail={thumbnails}
+                  techs={techs}
                 />
-              ))}
+              );
+            })}
         </div>
 
         <center>

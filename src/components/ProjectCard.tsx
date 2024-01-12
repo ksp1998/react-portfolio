@@ -2,9 +2,15 @@ type Props = {
   skeleton?: boolean;
   project?: { [key: string]: string };
   thumbnail?: { front?: string; back?: string };
+  techs?: string;
 };
 
-const ProjectCard = ({ skeleton = false, project = {}, thumbnail }: Props) => {
+const ProjectCard = ({
+  skeleton = false,
+  project = {},
+  thumbnail,
+  techs = "",
+}: Props) => {
   return (
     <div className={`col project-card ${skeleton ? "skeleton" : ""}`}>
       <figure className="thumbnail">
@@ -27,9 +33,14 @@ const ProjectCard = ({ skeleton = false, project = {}, thumbnail }: Props) => {
       <div className="details">
         <h3 className="title">{project.name?.replaceAll("-", " ")}</h3>
         <p className="description">{project.description}</p>
-        {project.language && (
-          <span className="language">#{project.language}</span>
-        )}
+        <div className="techs">
+          {techs &&
+            techs.split("|").map((tech, i) => (
+              <span key={`${tech}-${i}`} className="language">
+                {tech}
+              </span>
+            ))}
+        </div>
       </div>
     </div>
   );

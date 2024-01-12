@@ -541,15 +541,19 @@ body::before {
           flex-grow: 1;
         }
 
-        .language {
-          position: absolute;
-          bottom: 1em;
-          border: 1px solid $primary-dark;
-          font-size: 0.8rem;
-          font-weight: 300;
-          padding: 2px 8px;
-          border-radius: 2em;
-          background-color: rgba($primary-light, 0.1);
+        .techs {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 4px;
+
+          .language {
+            border: 1px solid $primary-dark;
+            font-size: 0.8rem;
+            font-weight: 300;
+            padding: 2px 8px;
+            border-radius: 2em;
+            background-color: rgba($primary-light, 0.1);
+          }
         }
       }
 

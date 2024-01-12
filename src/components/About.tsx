@@ -2,15 +2,16 @@ import Stars from "./Stars";
 
 const skills = [
   { name: "JavaScript", percent: 90 },
-  { name: "ReactJs", percent: 80 },
   { name: "TypeScript", percent: 75 },
-  { name: "SASS", percent: 85 },
-  { name: "PHP", percent: 90 },
-  { name: "MongoDB", percent: 60 },
+  { name: "ReactJS", percent: 90 },
+  { name: "NodeJS", percent: 70 },
+  { name: "CSS", percent: 85 },
+  { name: "MongoDB", percent: 65 },
   //   { name: "Java", percent: 60 },
   //   { name: "Firebase", percent: 70 },
-  //   { name: "MySQL", percent: 95 },
-  { name: "WordPress", percent: 70 },
+  { name: "MySQL", percent: 95 },
+  // { name: "PHP", percent: 80 },
+  { name: "WordPress", percent: 75 },
 ];
 
 const About = () => {
