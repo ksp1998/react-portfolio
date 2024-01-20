@@ -7,7 +7,7 @@ const Intro = () => {
 
   return (
     <section id="intro" className="stars-wrapper">
-      <Stars count={500} />
+      <Stars count={250} />
 
       <div className="container">
         <h1 className="intro-title">

@@ -18,7 +18,7 @@ const About = () => {
   return (
     <section id="about" className="section">
       <div className="container">
-        <Stars count={200} />
+        <Stars count={100} />
         <div className="row">
           <div className="col">
             <div className="profile">

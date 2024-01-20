@@ -74,6 +74,29 @@ body::before {
   animation-timeline: scroll();
 }
 
+#cursor-follower-dot,
+#cursor-follower-border {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 99999;
+  pointer-events: none;
+}
+
+#cursor-follower-dot {
+  width: 6px;
+  height: 6px;
+  background-color: $primary-light;
+}
+
+#cursor-follower-border {
+  width: 24px;
+  height: 24px;
+  border: 1px solid $primary-light;
+  opacity: 0.75;
+  transition: all 0.1s ease-in-out;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   @keyframes scroll-watcher {
     to {
