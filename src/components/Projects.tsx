@@ -13,13 +13,14 @@ const Projects = () => {
 
   useEffect(() => {
     (() => {
-      fetch(githubEndpoint, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
+      const headers: Record<string, string> = {};
+      if (accessToken) {
+        headers["Authorization"] = `Bearer ${accessToken}`;
+      }
+
+      fetch(githubEndpoint, { headers })
         .then((res) => res.json())
-        .then((json) => setProjects(json))
+        .then((json) => Array.isArray(json) && setProjects(json))
         .catch((error) => console.log(error));
     })();
   }, []);
